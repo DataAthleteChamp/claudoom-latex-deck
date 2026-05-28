@@ -1,28 +1,31 @@
 % --- 03 Architecture ----------------------------------------------------
 \begin{frame}{Architecture overview}
-
   \begin{center}
+    \resizebox{!}{0.78\textheight}{%
     \begin{tikzpicture}[
         every node/.style={font=\footnotesize, align=center, rounded corners=4pt},
-        box/.style={draw=accent, very thick, fill=accent!10, minimum width=2.6cm, minimum height=0.9cm},
-        fallback/.style={draw=warn, very thick, fill=warn!10, minimum width=2.6cm, minimum height=0.9cm},
-        last/.style={draw=accent2, very thick, fill=accent2!15, minimum width=2.6cm, minimum height=0.9cm},
+        box/.style={draw=accent, very thick, fill=accent!10!slate, text=paper,
+                    minimum width=2.4cm, minimum height=0.8cm},
+        fallback/.style={draw=warn, very thick, fill=warn!10!slate, text=paper,
+                         minimum width=2.4cm, minimum height=0.8cm},
+        last/.style={draw=accent2, very thick, fill=accent2!15!slate, text=paper,
+                     minimum width=2.4cm, minimum height=0.8cm},
         arr/.style={-{Stealth}, thick, accent},
       ]
       \node[box] (level) {Level parser};
-      \node[box, below=8mm of level] (decomp) {Subproblem split\\(BFS components)};
-      \node[box, below=8mm of decomp] (assign) {Round assignment};
+      \node[box, below=5mm of level] (decomp) {Subproblem split};
+      \node[box, below=5mm of decomp] (assign) {Round assignment};
 
-      \node[box, right=18mm of assign] (joint) {Joint A*\\($\leq 50$)};
-      \node[box, below=6mm of joint]    (ecbs)  {ECBS rounds};
-      \node[fallback, below=6mm of ecbs] (prio) {Prioritised};
-      \node[fallback, below=6mm of prio] (ser)  {Serialised};
-      \node[fallback, below=6mm of ser]  (win)  {Windowed};
-      \node[last, below=6mm of win]      (terra){Terraform};
+      \node[box, right=12mm of assign] (joint)  {Joint A* ($\leq 50$)};
+      \node[box, right=12mm of joint]  (ecbs)   {ECBS rounds};
+      \node[fallback, right=12mm of ecbs] (prio){Prioritised};
+      \node[fallback, below=5mm of prio]  (ser) {Serialised};
+      \node[fallback, below=5mm of ser]   (win) {Windowed};
+      \node[last, below=5mm of win]       (terra){Terraform};
 
-      \node[box, right=18mm of joint] (assemble) {Plan assembly};
+      \node[box, right=12mm of prio] (assemble) {Plan assembly};
 
-      \draw[arr] (level) -- (decomp);
+      \draw[arr] (level)  -- (decomp);
       \draw[arr] (decomp) -- (assign);
       \draw[arr] (assign) -- (joint);
       \draw[arr] (joint)  -- (ecbs);
@@ -30,12 +33,13 @@
       \draw[arr] (prio)   -- (ser);
       \draw[arr] (ser)    -- (win);
       \draw[arr] (win)    -- (terra);
-      \draw[arr] (joint)  -- (assemble);
-    \end{tikzpicture}
+      \draw[arr] (prio)   -- (assemble);
+    \end{tikzpicture}}
   \end{center}
 
-  \vspace{-0.2cm}
+  \vspace{0.1cm}
   \begin{center}
-    \footnotesize\textcolor{muted}{Independence detection\citebadge{standley2010} · portfolio escalation\citebadge{leytonbrown2003}}
+    \footnotesize\textcolor{muted}{Independence detection\citebadge{standley2010} ·
+      portfolio escalation\citebadge{leytonbrown2003}}
   \end{center}
 \end{frame}

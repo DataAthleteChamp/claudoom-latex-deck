@@ -6,41 +6,43 @@
   % --- title + tagline ---
   \vspace{0.2cm}
   {\Huge\bfseries\color{accent} ClauDOom}\\[6pt]
-  {\large\color{fg} A complexity-graduated cascade for multi-agent hospital planning}\\[4pt]
+  {\large\color{paper} A complexity-graduated cascade for multi-agent hospital planning}\\[4pt]
   {\footnotesize\color{muted} DTU 02285 — Artificial Intelligence and Multi-Agent Systems · F26}\\[10pt]
 
   % --- group declaration: 4 author cards ---
   \begin{tikzpicture}[
-      card/.style={draw=accent, very thick, rounded corners=8pt, fill=accent!8,
-                   minimum width=3.05cm, minimum height=2.7cm, inner sep=4pt, align=center},
-      nm/.style  ={font=\small\bfseries, text=fg, align=center},
-      sid/.style  ={font=\scriptsize\ttfamily, text=accent},
-      role/.style={font=\tiny, text=muted, text width=2.7cm, align=center},
+      card/.style={draw=accent, very thick, rounded corners=8pt,
+                   fill=accent!15!slate,
+                   minimum width=3.05cm, minimum height=2.7cm, inner sep=4pt, align=center,
+                   text=paper},
+      nm/.style  ={align=center, text=paper, font=\small\bfseries},
+      sid/.style ={text=accent, font=\scriptsize\ttfamily},
+      role/.style={text width=2.7cm, align=center, text=muted, font=\tiny},
     ]
     \node[card] (a) at (0,0) {};
-    \node[nm]   at ([yshift=0.85cm] a.center)  {Christian\\Shaffer-Lassen};
-    \node[sid]   at ([yshift=0.15cm] a.center)  {s196354};
-    \node[role] at ([yshift=-0.55cm] a.center) {Architecture · ECBS rounds · terraform planner · benchmarking};
+    \node[nm]   at ([yshift=0.85cm] a.center)  {Christian Shaffer-Lassen};
+    \node[sid]  at ([yshift=0.35cm] a.center)  {s196354};
+    \node[role] at ([yshift=-0.45cm] a.center) {Architecture · ECBS rounds · terraform planner · benchmarking};
 
     \node[card, right=0.4cm of a] (b) {};
-    \node[nm]   at ([yshift=0.85cm] b.center)  {Krish\\Waghresha};
-    \node[sid]   at ([yshift=0.15cm] b.center)  {s252788};
-    \node[role] at ([yshift=-0.55cm] b.center) {Goal assignment · heuristics · tiered escalation};
+    \node[nm]   at ([yshift=0.85cm] b.center)  {Krish Waghresha};
+    \node[sid]  at ([yshift=0.35cm] b.center)  {s252788};
+    \node[role] at ([yshift=-0.45cm] b.center) {Goal assignment · heuristics · tiered escalation};
 
     \node[card, right=0.4cm of b] (c) {};
-    \node[nm]   at ([yshift=0.85cm] c.center)  {Francisco\\Sampaio};
-    \node[sid]   at ([yshift=0.15cm] c.center)  {s252990};
-    \node[role] at ([yshift=-0.55cm] c.center) {Level design · results analysis · video demos};
+    \node[nm]   at ([yshift=0.85cm] c.center)  {Francisco Sampaio};
+    \node[sid]  at ([yshift=0.35cm] c.center)  {s252990};
+    \node[role] at ([yshift=-0.45cm] c.center) {Level design · results analysis · video demos};
 
     \node[card, right=0.4cm of c] (d) {};
-    \node[nm]   at ([yshift=0.85cm] d.center)  {Jakub\\Piotrowski};
-    \node[sid]   at ([yshift=0.15cm] d.center)  {s253074};
-    \node[role] at ([yshift=-0.55cm] d.center) {Windowed fallback · joint A* · debugging};
+    \node[nm]   at ([yshift=0.85cm] d.center)  {Jakub Piotrowski};
+    \node[sid]  at ([yshift=0.35cm] d.center)  {s253074};
+    \node[role] at ([yshift=-0.45cm] d.center) {Windowed fallback · joint A* · debugging};
   \end{tikzpicture}\\[14pt]
 
   % --- competition results pill ---
   \begin{tikzpicture}
-    \node[draw=accent2, very thick, rounded corners=999pt, fill=accent2!15,
+    \node[draw=accent2, very thick, rounded corners=12pt, fill=accent2!15!slate,
           inner sep=9pt, font=\small\bfseries, text=accent2]
           {\faIcon{trophy}\,\, \#1 / 64\,\, \textbar\,\, 55 / 69 solved\,\,
            \textbar\, \faIcon{stopwatch}\,\, \#3 time\,\,

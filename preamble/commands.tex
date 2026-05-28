@@ -8,7 +8,7 @@
   \begin{center}
     \begin{tikzpicture}
       \node[draw=warn, very thick, rounded corners=6pt, inner sep=10pt,
-            text=warn, font=\small\bfseries, fill=warn!10]
+            text=warn, font=\small\bfseries, fill=warn!10!slate]
             {TODO: #1};
     \end{tikzpicture}
   \end{center}}
@@ -49,13 +49,13 @@
 % Usage: \diagrambox{some label}
 \newcommand{\diagrambox}[1]{%
   \tikz \node[draw=accent, very thick, rounded corners=5pt,
-              fill=accent!10, inner sep=6pt, font=\small] {#1};}
+              fill=accent!10!slate, inner sep=6pt, font=\small] {#1};}
 
 % ---------- competition stat callout card (used on results slide) ----------
 % Usage: \resultcard{🥇}{Overall}{73.78}{\#1 of 64}
 \newcommand{\resultcard}[4]{%
   \begin{tikzpicture}
-    \node[draw=accent, very thick, rounded corners=8pt, fill=accent!10,
+    \node[draw=accent, very thick, rounded corners=8pt, fill=accent!10!slate,
           minimum width=3.2cm, minimum height=2.6cm, align=center]
           {\Large #1\\[2pt]\small\textbf{#2}\\[4pt]\LARGE\color{accent2}#3\\[2pt]\footnotesize\color{muted}#4};
   \end{tikzpicture}}

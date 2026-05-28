@@ -6,10 +6,10 @@
                          minimum width=3.2cm, minimum height=1.6cm},
       arr/.style={-{Stealth}, thick, accent},
     ]
-      \node[draw=accent, very thick, fill=accent!10] (ecbs) {ECBS round\\\tiny coupled, focal};
-      \node[draw=warn, very thick, fill=warn!10, right=12mm of ecbs] (prio)
+      \node[draw=accent, very thick, fill=accent!10!slate] (ecbs) {ECBS round\\\tiny coupled, focal};
+      \node[draw=warn, very thick, fill=warn!10!slate, right=12mm of ecbs] (prio)
             {Prioritised\\\tiny each agent respects\\\tiny earlier reservations};
-      \node[draw=warn, very thick, fill=warn!12, right=12mm of prio] (ser)
+      \node[draw=warn, very thick, fill=warn!12!slate, right=12mm of prio] (ser)
             {Serialised\\\tiny one mover at a time,\\\tiny everyone else static};
       \draw[arr] (ecbs) -- node[above, font=\tiny\itshape, draw=none, fill=none] {fail} (prio);
       \draw[arr] (prio) -- node[above, font=\tiny\itshape, draw=none, fill=none] {fail} (ser);
