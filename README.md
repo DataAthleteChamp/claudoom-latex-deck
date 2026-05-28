@@ -35,7 +35,7 @@ assets/{images,videos,diagrams}/   # add screenshots, mp4 demos, tikz svg
 
 | # | File                       | Topic                                       | Status |
 |---|----------------------------|---------------------------------------------|--------|
-| 1 | `01_title.tex`             | Title + 1st/64 trophy badge                 | 🟡 fill author names |
+| 1 | `01_title.tex`             | Title + group declaration + competition badge | 🟢 |
 | 2 | `02_strategy.tex`          | Cascade of strategies                       | 🟢 |
 | 3 | `03_architecture.tex`      | TikZ architecture diagram                   | 🟢 |
 | 4 | `04_decomposition.tex`     | BFS subgoal decomposition                   | 🔴 needs screenshot |
