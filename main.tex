@@ -1,0 +1,38 @@
+% =====================================================================
+% main.tex — ClauDOom presentation (LaTeX Beamer template)
+% Build: `make`  (calls latexmk -xelatex -bibtex)
+% =====================================================================
+
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+\input{preamble/packages.tex}
+\input{preamble/theme.tex}
+\input{preamble/commands.tex}
+\input{preamble/meta.tex}
+
+\begin{document}
+
+% --- 14 slides; one file per slide for parallel editing ---
+\input{slides/01_title.tex}
+\input{slides/02_strategy.tex}
+\input{slides/03_architecture.tex}
+\input{slides/04_decomposition.tex}
+\input{slides/05_joint_astar.tex}
+\input{slides/06_ecbs_rounds.tex}
+\input{slides/07_ecbs_fallbacks.tex}
+\input{slides/08_windowed.tex}
+\input{slides/09_terraform.tex}
+\input{slides/10_claudoom_level.tex}
+\input{slides/11_experiments.tex}
+\input{slides/12_limitations.tex}
+\input{slides/13_future_work.tex}
+\input{slides/14_results.tex}
+
+% --- references appendix (not counted in the 12 min) ---
+\appendix
+\begin{frame}[allowframebreaks]{References}
+  \tiny
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

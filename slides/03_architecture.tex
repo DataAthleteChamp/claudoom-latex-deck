@@ -1,0 +1,41 @@
+% --- 03 Architecture ----------------------------------------------------
+\begin{frame}{Architecture overview}
+
+  \begin{center}
+    \begin{tikzpicture}[
+        every node/.style={font=\footnotesize, align=center, rounded corners=4pt},
+        box/.style={draw=accent, very thick, fill=accent!10, minimum width=2.6cm, minimum height=0.9cm},
+        fallback/.style={draw=warn, very thick, fill=warn!10, minimum width=2.6cm, minimum height=0.9cm},
+        last/.style={draw=accent2, very thick, fill=accent2!15, minimum width=2.6cm, minimum height=0.9cm},
+        arr/.style={-{Stealth}, thick, accent},
+      ]
+      \node[box] (level) {Level parser};
+      \node[box, below=8mm of level] (decomp) {Subproblem split\\(BFS components)};
+      \node[box, below=8mm of decomp] (assign) {Round assignment};
+
+      \node[box, right=18mm of assign] (joint) {Joint A*\\($\leq 50$)};
+      \node[box, below=6mm of joint]    (ecbs)  {ECBS rounds};
+      \node[fallback, below=6mm of ecbs] (prio) {Prioritised};
+      \node[fallback, below=6mm of prio] (ser)  {Serialised};
+      \node[fallback, below=6mm of ser]  (win)  {Windowed};
+      \node[last, below=6mm of win]      (terra){Terraform};
+
+      \node[box, right=18mm of joint] (assemble) {Plan assembly};
+
+      \draw[arr] (level) -- (decomp);
+      \draw[arr] (decomp) -- (assign);
+      \draw[arr] (assign) -- (joint);
+      \draw[arr] (joint)  -- (ecbs);
+      \draw[arr] (ecbs)   -- (prio);
+      \draw[arr] (prio)   -- (ser);
+      \draw[arr] (ser)    -- (win);
+      \draw[arr] (win)    -- (terra);
+      \draw[arr] (joint)  -- (assemble);
+    \end{tikzpicture}
+  \end{center}
+
+  \vspace{-0.2cm}
+  \begin{center}
+    \footnotesize\textcolor{muted}{Independence detection\citebadge{standley2010} · portfolio escalation\citebadge{leytonbrown2003}}
+  \end{center}
+\end{frame}

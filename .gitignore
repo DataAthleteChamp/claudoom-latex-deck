@@ -1,0 +1,30 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.dvi
+*.ps
+_minted-*
+
+# build output
+build/
+main.pdf
+
+# OS / editor noise
+.DS_Store
+.vscode/
+.idea/
+*.swp

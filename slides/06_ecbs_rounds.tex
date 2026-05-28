@@ -1,0 +1,31 @@
+% --- 06 ECBS rounds -----------------------------------------------------
+\begin{frame}{Strategy 2 — Round-based ECBS}
+  \begin{columns}[T, onlytextwidth]
+    \column{0.46\textwidth}
+      \vspace{0.4cm}
+      \begin{center}
+        % FOCAL list visualisation
+        \begin{tikzpicture}
+          \draw[draw=accent, very thick, fill=accent!8] (0,0) circle (2.0);
+          \node[font=\small\bfseries, accent] at (0, 1.6) {OPEN};
+          \draw[draw=accent2, very thick, fill=accent2!20] (0,-0.3) circle (1.1);
+          \node[font=\small\bfseries, accent2] at (0,-0.3) {FOCAL};
+          \node[font=\tiny, muted, align=center] at (0,-1.05)
+               {cost $\leq w \cdot$ min};
+          \node[font=\tiny, muted] at (0,-1.85) {$w = 1.3$};
+        \end{tikzpicture}
+      \end{center}
+
+    \column{0.5\textwidth}
+      \vspace{0.4cm}
+      \begin{itemize}
+        \item High level: branch on first conflict, constrain a victim, replan\citebadge{sharon2015}.
+        \item FOCAL pop chooses the node with fewest conflicts\citebadge{barer2014}.
+        \item Tasks re-assigned every round (lifelong-style)\citebadge{ma2017}.
+        \item Goal ordering prefers routes that block fewer other deliveries\citebadge{felner2018}.
+      \end{itemize}
+
+      \vspace{0.2cm}
+      \demovideo{assets/videos/ecbs_round_demo.mp4}{Round-based ECBS in action.}
+  \end{columns}
+\end{frame}

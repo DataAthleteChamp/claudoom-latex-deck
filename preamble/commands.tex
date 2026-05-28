@@ -1,0 +1,61 @@
+% =====================================================================
+% commands.tex — custom commands used across slides
+% Each command is intentionally simple so the team can override later.
+% =====================================================================
+
+% ---------- TODO banner (visible on the slide, grep-friendly) ----------
+\newcommand{\todoslide}[1]{%
+  \begin{center}
+    \begin{tikzpicture}
+      \node[draw=warn, very thick, rounded corners=6pt, inner sep=10pt,
+            text=warn, font=\small\bfseries, fill=warn!10]
+            {TODO: #1};
+    \end{tikzpicture}
+  \end{center}}
+
+% ---------- inline citation badge (small, corner-friendly) ----------
+% Usage: \citebadge{sharon2015}
+\newcommand{\citebadge}[1]{\textsuperscript{\textcolor{accent}{\cite{#1}}}}
+
+% ---------- image placeholder ----------
+% Usage: \screenshot{assets/images/file.png}{Caption text}
+\newcommand{\screenshot}[2]{%
+  \begin{center}
+    \IfFileExists{#1}{%
+      \includegraphics[width=0.9\textwidth, keepaspectratio]{#1}%
+    }{%
+      \fbox{\parbox[c][0.45\textheight][c]{0.9\textwidth}{\centering
+        \textcolor{muted}{\small [screenshot placeholder]\\\texttt{\detokenize{#1}}}}}%
+    }
+    \\[2pt]{\footnotesize\textcolor{muted}{#2}}
+  \end{center}}
+
+% ---------- embedded video ----------
+% Usage: \demovideo{assets/videos/file.mp4}{Caption text}
+% Acrobat / okular play; basic PDF readers show a placeholder.
+\newcommand{\demovideo}[2]{%
+  \begin{center}
+    \IfFileExists{#1}{%
+      \movie[width=0.9\textwidth, height=0.55\textheight,
+             poster, showcontrols, autostart=false]{}{#1}%
+    }{%
+      \fbox{\parbox[c][0.55\textheight][c]{0.9\textwidth}{\centering
+        \textcolor{muted}{\small [video placeholder]\\\texttt{\detokenize{#1}}}}}%
+    }
+    \\[2pt]{\footnotesize\textcolor{muted}{#2}}
+  \end{center}}
+
+% ---------- rounded TikZ rectangle building block (architecture diagrams) ----------
+% Usage: \diagrambox{some label}
+\newcommand{\diagrambox}[1]{%
+  \tikz \node[draw=accent, very thick, rounded corners=5pt,
+              fill=accent!10, inner sep=6pt, font=\small] {#1};}
+
+% ---------- competition stat callout card (used on results slide) ----------
+% Usage: \resultcard{🥇}{Overall}{73.78}{\#1 of 64}
+\newcommand{\resultcard}[4]{%
+  \begin{tikzpicture}
+    \node[draw=accent, very thick, rounded corners=8pt, fill=accent!10,
+          minimum width=3.2cm, minimum height=2.6cm, align=center]
+          {\Large #1\\[2pt]\small\textbf{#2}\\[4pt]\LARGE\color{accent2}#3\\[2pt]\footnotesize\color{muted}#4};
+  \end{tikzpicture}}

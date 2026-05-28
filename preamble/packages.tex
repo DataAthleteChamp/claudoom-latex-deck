@@ -1,0 +1,43 @@
+% =====================================================================
+% packages.tex — third-party packages used by the deck
+% Build engine: xelatex (metropolis ships with Fira; xelatex is preferred)
+% =====================================================================
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, fit, backgrounds, shadows.blur}
+
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=*}
+
+% video / animation hooks (Beamer-native; Acrobat plays the embedded mp4)
+\usepackage{multimedia}
+% media9 is an alternative; we stick with \movie via multimedia for portability
+
+% modern fonts (Metropolis defaults to Fira; xelatex needed for fontspec)
+\usepackage{fontspec}
+
+% icons (trophy, medal, stopwatch on the title and results slides)
+% Falls back to text if fontawesome5 isn't installed.
+\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}}{%
+  \providecommand{\faIcon}[1]{\textbf{[#1]}}}
+
+% references / bibliography
+\usepackage[backend=biber, style=numeric-comp, sorting=none, maxbibnames=99]{biblatex}
+\addbibresource{bibliography/references.bib}
+
+% smart quotes for biblatex
+\usepackage{csquotes}
+
+% hyperlinks last, after most packages
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    citecolor=accent,
+}

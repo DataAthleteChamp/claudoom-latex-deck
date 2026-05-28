@@ -1,0 +1,38 @@
+% --- 02 Strategy --------------------------------------------------------
+\begin{frame}{Strategy: many fallbacks, never give up}
+  \begin{center}
+    \large \emph{Try the fastest solver first. If it can't solve, escalate.}
+  \end{center}
+
+  \vspace{0.4cm}
+  \begin{center}
+    \begin{tikzpicture}[node distance=8mm, every node/.style={font=\small}]
+      \node[draw=accent, very thick, rounded corners=5pt, fill=accent!10,
+            minimum width=2.4cm, minimum height=1cm, align=center] (a)
+            {Joint A*\\\tiny ($\leq 50$ cells)};
+      \node[draw=accent, very thick, rounded corners=5pt, fill=accent!10,
+            minimum width=2.4cm, minimum height=1cm, align=center, right=of a] (b)
+            {ECBS rounds};
+      \node[draw=accent, very thick, rounded corners=5pt, fill=accent!10,
+            minimum width=2.4cm, minimum height=1cm, align=center, right=of b] (c)
+            {Prioritised};
+      \node[draw=accent, very thick, rounded corners=5pt, fill=accent!10,
+            minimum width=2.4cm, minimum height=1cm, align=center, right=of c] (d)
+            {Serialised};
+      \node[draw=accent, very thick, rounded corners=5pt, fill=accent!10,
+            minimum width=2.4cm, minimum height=1cm, align=center, right=of d] (e)
+            {Windowed};
+      \node[draw=accent2, very thick, rounded corners=5pt, fill=accent2!15,
+            minimum width=2.4cm, minimum height=1cm, align=center, right=of e] (f)
+            {Terraform};
+      \foreach \i/\j in {a/b, b/c, c/d, d/e, e/f}
+        \draw[-{Stealth}, thick, accent] (\i) -- (\j);
+    \end{tikzpicture}
+  \end{center}
+
+  \vspace{0.4cm}
+  \begin{itemize}
+    \item Each strategy is bounded; failure is detected fast and handed to the next layer.
+    \item Portfolio-style escalation\citebadge{leytonbrown2003}.
+  \end{itemize}
+\end{frame}

@@ -1,0 +1,115 @@
+% =====================================================================
+% references.bib — 12 verified, code-anchored citations
+% Each entry corresponds to one or more modules in PythonMazeRunner/solver/*.py
+% =====================================================================
+
+@inproceedings{standley2010,
+  author    = {Standley, Trevor},
+  title     = {Finding Optimal Solutions to Cooperative Pathfinding Problems},
+  booktitle = {Proceedings of the 24th AAAI Conference on Artificial Intelligence},
+  year      = {2010},
+  note      = {Independence Detection and Operator Decomposition; defends \texttt{solver/subproblems.py} and the coupled joint search in \texttt{solver/joint.py}.}
+}
+
+@article{pohl1970,
+  author  = {Pohl, Ira},
+  title   = {Heuristic Search Viewed as Path Finding in a Graph},
+  journal = {Artificial Intelligence},
+  volume  = {1},
+  number  = {3--4},
+  pages   = {193--204},
+  year    = {1970},
+  note    = {Weighted A* ($w \cdot h$); defends \texttt{W\_JOINT=2.5} in \texttt{solver/joint.py} and \texttt{W\_LOW=1.5}, \texttt{W\_MULTI=2.0} in \texttt{solver/low\_level.py}.}
+}
+
+@article{sharon2015,
+  author  = {Sharon, Guni and Stern, Roni and Felner, Ariel and Sturtevant, Nathan R.},
+  title   = {Conflict-Based Search for Optimal Multi-Agent Pathfinding},
+  journal = {Artificial Intelligence},
+  volume  = {219},
+  pages   = {40--66},
+  year    = {2015},
+  note    = {CBS high-level: branch on first conflict, constrain a victim, replan; defends the high level of \texttt{solver/ecbs.py}.}
+}
+
+@inproceedings{barer2014,
+  author    = {Barer, Max and Sharon, Guni and Stern, Roni and Felner, Ariel},
+  title     = {Suboptimal Variants of the Conflict-Based Search Algorithm for the Multi-Agent Pathfinding Problem},
+  booktitle = {Proceedings of the Symposium on Combinatorial Search (SoCS)},
+  year      = {2014},
+  note      = {ECBS with FOCAL list; defends \texttt{W\_ECBS=1.3} and the focal pop in \texttt{solver/ecbs.py:153--154}.}
+}
+
+@article{erdmann1987,
+  author  = {Erdmann, Michael and Lozano-P{\'e}rez, Tom{\'a}s},
+  title   = {On Multiple Moving Objects},
+  journal = {Algorithmica},
+  volume  = {2},
+  number  = {4},
+  pages   = {477--521},
+  year    = {1987},
+  note    = {Prioritised / sequential planning; defends \texttt{ecbs.prioritized\_round} and \texttt{ecbs.serialized\_round}.}
+}
+
+@inproceedings{silver2005,
+  author    = {Silver, David},
+  title     = {Cooperative Pathfinding},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment (AIIDE)},
+  year      = {2005},
+  note      = {Reservation tables and Windowed Hierarchical Cooperative A* (WHCA*); defends the reservation logic in \texttt{ecbs.prioritized\_round} and the rolling-window region in \texttt{solver/windowed.py}.}
+}
+
+@inproceedings{ma2017,
+  author    = {Ma, Hang and Li, Jiaoyang and Kumar, T. K. Satish and Koenig, Sven},
+  title     = {Lifelong Multi-Agent Path Finding for Online Pickup and Delivery Tasks},
+  booktitle = {Proceedings of the 16th Conference on Autonomous Agents and MultiAgent Systems (AAMAS)},
+  year      = {2017},
+  note      = {Lifelong MAPF / per-round re-assignment; defends the round driver in \texttt{solver/rounds.py} (\texttt{assign\_round(state)} called every round).}
+}
+
+@inproceedings{felner2018,
+  author    = {Felner, Ariel and Li, Jiaoyang and Boyarski, Eli and Ma, Hang and Cohen, Liron and Kumar, T. K. Satish and Koenig, Sven},
+  title     = {Adding Heuristics to Conflict-Based Search for Multi-Agent Path Finding},
+  booktitle = {Proceedings of the Symposium on Combinatorial Search (SoCS)},
+  year      = {2018},
+  note      = {Conflict-aware goal-ordering heuristics; defends the path\_count + degree ordering in \texttt{solver/assignment.py:47--78}.}
+}
+
+@article{dewilde2014,
+  author  = {de Wilde, Boris and ter Mors, Adriaan W. and Witteveen, Cees},
+  title   = {Push and Rotate: A Complete Multi-agent Pathfinding Algorithm},
+  journal = {Journal of Artificial Intelligence Research},
+  volume  = {51},
+  pages   = {443--492},
+  year    = {2014},
+  note    = {Explicit rotation-cycle handling; defends \texttt{\_blocker\_cycle} in \texttt{solver/temp\_eviction.py:16--57}.}
+}
+
+@article{stilman2005,
+  author  = {Stilman, Mike and Kuffner, James},
+  title   = {Navigation Among Movable Obstacles: Real-Time Reasoning in Complex Environments},
+  journal = {International Journal of Humanoid Robotics},
+  volume  = {2},
+  number  = {4},
+  pages   = {479--503},
+  year    = {2005},
+  note    = {NAMO evict-and-restore pattern; defends \texttt{clearing\_tasks} in \texttt{solver/temp\_eviction.py} and the restore branch in \texttt{solver/windowed.py:60--63}.}
+}
+
+@misc{vainshtein2022,
+  author       = {Vainshtein, David and Solovey, Kiril and Salzman, Oren},
+  title        = {Multi-Agent Terraforming: Efficient Multi-Agent Path Finding via Environment Manipulation},
+  year         = {2022},
+  eprint       = {2203.10540},
+  archivePrefix= {arXiv},
+  primaryClass = {cs.RO},
+  note         = {Multi-mover terraforming; defends the evict / vacate / deliver scripted ops in \texttt{solver/terraform.py:110--160}.}
+}
+
+@inproceedings{leytonbrown2003,
+  author    = {Leyton-Brown, Kevin and Nudelman, Eugene and Andrew, Galen and McFadden, Jim and Shoham, Yoav},
+  title     = {A Portfolio Approach to Algorithm Selection},
+  booktitle = {Proceedings of the 18th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year      = {2003},
+  note      = {Algorithm portfolio / tiered escalation; defends the \texttt{\_TIERS} round-robin escalation in \texttt{solver/coordinator.py}.}
+}

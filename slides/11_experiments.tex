@@ -1,0 +1,21 @@
+% --- 11 Experiments & tuning -------------------------------------------
+\begin{frame}{Experiments \& tuning}
+  \begin{center}
+    \begin{tabular}{@{}l c l@{}}
+      \toprule
+      \textbf{Ablation} & \textbf{$\Delta$ solved} & \textbf{Why}\\
+      \midrule
+      remove Joint A* (only ECBS)        & TODO & small subproblems become slow \\
+      cutoff $25 \to 50 \to 100$ cells   & TODO & sweet spot at $50$            \\
+      $W_{\text{joint}} \in \{1.5, 2.5, 4\}$ & TODO & accuracy / speed trade-off \\
+      remove Terraform                   & TODO & loses Nej, TriWards            \\
+      remove FOCAL (plain CBS)           & TODO & blow-up on dense rooms         \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \vspace{0.4cm}
+  \begin{center}
+    \footnotesize\textcolor{muted}{Algorithm portfolio\citebadge{leytonbrown2003}}
+  \end{center}
+\end{frame}

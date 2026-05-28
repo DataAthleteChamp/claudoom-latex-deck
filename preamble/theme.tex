@@ -1,0 +1,25 @@
+% =====================================================================
+% theme.tex — Beamer theme + colour palette
+% =====================================================================
+
+\usetheme{metropolis}
+
+% --- palette (loosely matched to cascade-deck-maker visual identity)
+\definecolor{accent}{HTML}{5EEAD4}   % teal
+\definecolor{accent2}{HTML}{FACC15}  % gold (trophy / podium)
+\definecolor{warn}{HTML}{F87171}     % soft red (TODO banners, boundaries)
+\definecolor{bg}{HTML}{0F172A}       % slate-900
+\definecolor{fg}{HTML}{F1F5F9}       % slate-100
+\definecolor{muted}{HTML}{94A3B8}    % slate-400
+
+\setbeamercolor{normal text}{fg=fg, bg=bg}
+\setbeamercolor{alerted text}{fg=accent}
+\setbeamercolor{example text}{fg=accent2}
+\setbeamercolor{frametitle}{fg=fg, bg=bg}
+\setbeamercolor{title}{fg=accent}
+\setbeamercolor{subtitle}{fg=muted}
+\setbeamercolor{progress bar}{fg=accent, bg=muted}
+
+% wider title room; minimal footer
+\setbeamertemplate{frametitle continuation}{}
+\metroset{progressbar=frametitle, numbering=fraction, sectionpage=none}

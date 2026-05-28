@@ -1,0 +1,18 @@
+% --- 04 Subgoal decomposition ------------------------------------------
+\begin{frame}{Subgoal decomposition}
+  \begin{columns}[T, onlytextwidth]
+    \column{0.62\textwidth}
+      \screenshot{assets/images/decomposition_red_boundary.png}%
+        {Level partitioned into independent sub-regions (red boundaries).}
+
+    \column{0.36\textwidth}
+      \vspace{1.2cm}
+      \begin{itemize}
+        \item BFS connected components on \emph{free} cells.
+        \item Drop regions with no agent or goal.
+        \item Each region solved independently, then re-assembled.
+      \end{itemize}
+      \vspace{0.6cm}
+      \footnotesize\textcolor{muted}{Independence detection\citebadge{standley2010}}
+  \end{columns}
+\end{frame}
