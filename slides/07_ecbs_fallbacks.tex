@@ -1,24 +1,51 @@
 % --- 07 ECBS fallbacks --------------------------------------------------
+% Demo level: TwoPlayer (3 agents, narrow 3-cell passages → forces yielding).
+% Reserved for fallback chain only.
 \begin{frame}{When ECBS stalls — prioritised \,$\to$\, serialised}
+  \vspace{-0.15cm}
   \begin{center}
     \begin{tikzpicture}[
       every node/.style={font=\footnotesize, align=center, rounded corners=5pt,
-                         minimum width=3.2cm, minimum height=1.6cm},
+                         minimum width=2.9cm, minimum height=1.3cm, text=paper},
       arr/.style={-{Stealth}, thick, accent},
     ]
-      \node[draw=accent, very thick, fill=accent!10!slate] (ecbs) {ECBS round\\\tiny coupled, focal};
-      \node[draw=warn, very thick, fill=warn!10!slate, right=12mm of ecbs] (prio)
-            {Prioritised\\\tiny each agent respects\\\tiny earlier reservations};
-      \node[draw=warn, very thick, fill=warn!12!slate, right=12mm of prio] (ser)
-            {Serialised\\\tiny one mover at a time,\\\tiny everyone else static};
-      \draw[arr] (ecbs) -- node[above, font=\tiny\itshape, draw=none, fill=none] {fail} (prio);
-      \draw[arr] (prio) -- node[above, font=\tiny\itshape, draw=none, fill=none] {fail} (ser);
+      \node[draw=accent, very thick, fill=accent!10!slate]
+            (ecbs) {ECBS round\\{\tiny coupled, focal}};
+      \node[draw=warn, very thick, fill=warn!10!slate, right=10mm of ecbs]
+            (prio) {Prioritised\\{\tiny agent $i$ respects $<i$ reservations}};
+      \node[draw=warn, very thick, fill=warn!15!slate, right=10mm of prio]
+            (ser)  {Serialised\\{\tiny 1 mover, others static}};
+      \draw[arr] (ecbs) -- node[above, font=\tiny\itshape, text=warn]
+                              {budget exceeded} (prio);
+      \draw[arr] (prio) -- node[above, font=\tiny\itshape, text=warn]
+                              {still infeasible} (ser);
     \end{tikzpicture}
   \end{center}
 
-  \vspace{0.5cm}
-  \begin{itemize}
-    \item Prioritised + reservation tables\citebadge{erdmann1987}\citebadge{silver2005}.
-    \item Serialised: always feasible if any single-agent plan exists\citebadge{erdmann1987}.
-  \end{itemize}
+  \vspace{0.1cm}
+  \begin{columns}[T, onlytextwidth]
+    % --- LEFT: pseudocode for the two fallbacks ---
+    \column{0.46\textwidth}
+      \algbox{prioritised}{%
+        \textbf{for} agent $a_i$ in priority order:\\
+        \quad respect reservations of $a_{<i}$\\
+        \quad single-agent A*, write reservations}
+      \\[6pt]
+      \algbox{serialised}{%
+        \textbf{for} agent $a_i$ in priority order:\\
+        \quad freeze all other agents\\
+        \quad single-agent A* on static map}
+      \vspace{0.1cm}
+
+      {\scriptsize
+       Reservation tables\citebadge{erdmann1987}\citebadge{silver2005};
+       serialised is always feasible if any single-agent plan exists\citebadge{erdmann1987}.\par}
+
+    % --- RIGHT: short video showing sequential motion ---
+    \column{0.50\textwidth}
+      \demovideo[0.40\textheight]{assets/videos/07_fallback_twoplayer.mp4}%
+        {\textbf{TwoPlayer} — 3 agents in 3-cell passages.\\
+         Watch agents \emph{yield} for one another — the visual signature of
+         prioritised / serialised motion.}
+  \end{columns}
 \end{frame}

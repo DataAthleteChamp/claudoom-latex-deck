@@ -31,18 +31,17 @@
   \end{center}}
 
 % ---------- embedded video ----------
-% Usage: \demovideo{assets/videos/file.mp4}{Caption text}
-% Acrobat / okular play; basic PDF readers show a placeholder.
-\newcommand{\demovideo}[2]{%
+% Usage: \demovideo[height]{path}{caption}    (height defaults to 0.55\textheight)
+\newcommand{\demovideo}[3][0.55\textheight]{%
   \begin{center}
-    \IfFileExists{#1}{%
-      \movie[width=0.9\textwidth, height=0.55\textheight,
-             poster, showcontrols, autostart=false]{}{#1}%
+    \IfFileExists{#2}{%
+      \movie[width=0.9\textwidth, height=#1,
+             poster, showcontrols, autostart=false]{}{#2}%
     }{%
-      \fbox{\parbox[c][0.55\textheight][c]{0.9\textwidth}{\centering
-        \textcolor{muted}{\small [video placeholder]\\\texttt{\detokenize{#1}}}}}%
+      \fbox{\parbox[c][#1][c]{0.9\textwidth}{\centering
+        \textcolor{muted}{\small [video placeholder]\\\texttt{\detokenize{#2}}}}}%
     }
-    \\[2pt]{\footnotesize\textcolor{muted}{#2}}
+    \\[2pt]{\footnotesize\textcolor{muted}{#3}}
   \end{center}}
 
 % ---------- rounded TikZ rectangle building block (architecture diagrams) ----------
@@ -50,6 +49,19 @@
 \newcommand{\diagrambox}[1]{%
   \tikz \node[draw=accent, very thick, rounded corners=5pt,
               fill=accent!10!slate, inner sep=6pt, font=\small] {#1};}
+
+% ---------- pseudocode panel (algorithm block) ----------
+% Usage: \algbox{title}{contents — use \\ for line breaks}
+\newcommand{\algbox}[2]{%
+  \begin{tikzpicture}
+    \node[draw=accent, line width=0pt, left color=accent!30!slate, right color=slate,
+          rounded corners=6pt, inner sep=8pt,
+          text=paper, font=\scriptsize\ttfamily, align=left]
+      (alg) {#2};
+    \node[anchor=south west, font=\tiny\bfseries, text=accent2,
+          inner sep=4pt, fill=slate, rounded corners=3pt]
+      at ([yshift=2pt, xshift=8pt] alg.north west) {#1};
+  \end{tikzpicture}}
 
 % ---------- competition stat callout card (used on results slide) ----------
 % Usage: \resultcard{🥇}{Overall}{73.78}{\#1 of 64}

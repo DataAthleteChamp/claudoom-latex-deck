@@ -1,31 +1,47 @@
 % --- 06 ECBS rounds -----------------------------------------------------
+% Demo level: CphAirprt (10 agents, 33x44 airport-style layout, clean ECBS solve).
+% Reserved for ECBS only — do not reuse on other slides.
 \begin{frame}{Strategy 2 — Round-based ECBS}
+  \vspace{-0.25cm}
   \begin{columns}[T, onlytextwidth]
-    \column{0.46\textwidth}
-      \vspace{0.4cm}
+    % --- LEFT: FOCAL diagram (small) ---
+    \column{0.34\textwidth}
+      \vspace{0.05cm}
       \begin{center}
-        % FOCAL list visualisation
-        \begin{tikzpicture}
-          \draw[draw=accent, very thick, fill=accent!8!slate] (0,0) circle (2.0);
-          \node[font=\small\bfseries, accent] at (0, 1.6) {OPEN};
-          \draw[draw=accent2, very thick, fill=accent2!20!slate] (0,-0.3) circle (1.1);
-          \node[font=\small\bfseries, accent2] at (0,-0.3) {FOCAL};
-          \node[font=\tiny, muted, align=center] at (0,-1.05)
-               {cost $\leq w \cdot$ min};
-          \node[font=\tiny, muted] at (0,-1.85) {$w = 1.3$};
+        \begin{tikzpicture}[scale=0.85]
+          \draw[draw=accent, very thick, fill=accent!8!slate]   (0,0)    circle (1.6);
+          \draw[draw=accent2, very thick, fill=accent2!20!slate] (0,-0.25) circle (0.85);
+          \node[font=\scriptsize\bfseries, accent]  at (0, 1.25) {OPEN};
+          \node[font=\scriptsize\bfseries, accent2] at (0,-0.25) {FOCAL};
+          \node[font=\tiny, muted] at (0,-0.85) {cost $\leq w\cdot$min};
+          \node[font=\tiny, muted] at (0,-1.4)  {$w = 1.3$};
         \end{tikzpicture}
       \end{center}
+      \vspace{-0.05cm}
+      {\scriptsize\color{muted}\centering
+        FOCAL picks the node with the \emph{fewest conflicts}.\par}
 
-    \column{0.5\textwidth}
-      \vspace{0.4cm}
-      \begin{itemize}
-        \item High level: branch on first conflict, constrain a victim, replan\citebadge{sharon2015}.
-        \item FOCAL pop chooses the node with fewest conflicts\citebadge{barer2014}.
-        \item Tasks re-assigned every round (lifelong-style)\citebadge{ma2017}.
-        \item Goal ordering prefers routes that block fewer other deliveries\citebadge{felner2018}.
-      \end{itemize}
+    % --- RIGHT: pseudocode + citations ---
+    \column{0.64\textwidth}
+      \vspace{0.05cm}
+      \algbox{ECBS round}{%
+        OPEN $\leftarrow$ \{root (no constraints)\}\\
+        \textbf{while} OPEN $\neq \emptyset$ \textbf{do}\\
+        \quad FOCAL $\leftarrow$ \{n $\in$ OPEN : n.cost $\leq w\cdot$min\}\\
+        \quad n $\leftarrow$ pop FOCAL with fewest conflicts\\
+        \quad c $\leftarrow$ first conflict in n.solution\\
+        \quad \textbf{if} c is None \textbf{return} n.solution\\
+        \quad \textbf{for} each agent in c: add constraint, replan, push}
+      \vspace{0.1cm}
 
-      \vspace{0.2cm}
-      \demovideo{assets/videos/ecbs_round_demo.mp4}{Round-based ECBS in action.}
+      {\scriptsize CBS\citebadge{sharon2015} · FOCAL\citebadge{barer2014} ·
+       per-round re-assignment\citebadge{ma2017} ·
+       route-blocking goal ordering\citebadge{felner2018}.\par}
   \end{columns}
+
+  % --- BOTTOM: video placeholder ---
+  \vspace{0.05cm}
+  \demovideo[0.30\textheight]{assets/videos/06_ecbs_cphairprt_solve.mp4}%
+    {\textbf{CphAirprt} — 10 agents · 33$\times$44 airport · cleanly solved by ECBS rounds.}
 \end{frame}
+
